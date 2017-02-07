@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+   <duplication lines="40" tokens="239">
+      <file line="73"
+            path="/Users/petra/Documents/workspace/jnotepadpp/src/main/java/hr/fer/zemris/java/hw10/jnotepadpp/NewDocumentAction.java"/>
+      <file line="96"
+            path="/Users/petra/Documents/workspace/jnotepadpp/src/main/java/hr/fer/zemris/java/hw10/jnotepadpp/OpenDocumentAction.java"/>
+      <codefragment><![CDATA[		JTextArea editor = new JTextArea();
+		editor.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				tabs.setIconAt(currentTab, new ImageIcon("img/red.png"));
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				tabs.setIconAt(currentTab, new ImageIcon("img/red.png"));
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				tabs.setIconAt(currentTab, new ImageIcon("img/red.png"));
+			}
+		});
+		editor.addCaretListener(new CaretListener() {
+
+			@Override
+			public void caretUpdate(CaretEvent e) {
+				notepad.length = editor.getDocument().getLength();
+				int caretpos = editor.getCaretPosition();
+				try {
+					notepad.ln = editor.getLineOfOffset(caretpos);
+					notepad.col = caretpos
+							- editor.getLineStartOffset(notepad.ln);
+					int pocetak = Math.min(editor.getCaret().getDot(), editor
+							.getCaret().getMark());
+					notepad.selected = Math.max(editor.getCaret().getDot(),
+							editor.getCaret().getMark()) - pocetak;
+				} catch (BadLocationException e1) {
+					JOptionPane.showMessageDialog(editor,
+							"It is not possible to get current line and row.");
+				}
+				notepad.ln += 1;
+				notepad.numbers.repaint();
+			}
+		});]]></codefragment>
+   </duplication>
+   <duplication lines="22" tokens="110">
+      <file line="127"
+            path="/Users/petra/Documents/workspace/jnotepadpp/src/main/java/hr/fer/zemris/java/hw10/jnotepadpp/JNotepadPP.java"/>
+      <file line="73"
+            path="/Users/petra/Documents/workspace/jnotepadpp/src/main/java/hr/fer/zemris/java/hw10/jnotepadpp/NewDocumentAction.java"/>
+      <codefragment><![CDATA[		JTextArea editor = new JTextArea();
+		editor.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				tabs.setIconAt(currentTab, new ImageIcon("img/red.png"));
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				tabs.setIconAt(currentTab, new ImageIcon("img/red.png"));
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				tabs.setIconAt(currentTab, new ImageIcon("img/red.png"));
+			}
+		});
+		editor.addCaretListener(new CaretListener() {
+
+			@Override
+			public void caretUpdate(CaretEvent e) {]]></codefragment>
+   </duplication>
+   <duplication lines="22" tokens="104">
+      <file line="127"
+            path="/Users/petra/Documents/workspace/jnotepadpp/src/main/java/hr/fer/zemris/java/hw10/jnotepadpp/JNotepadPP.java"/>
+      <file line="96"
+            path="/Users/petra/Documents/workspace/jnotepadpp/src/main/java/hr/fer/zemris/java/hw10/jnotepadpp/OpenDocumentAction.java"/>
+      <codefragment><![CDATA[		JTextArea editor = new JTextArea();
+		editor.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				tabs.setIconAt(currentTab, new ImageIcon("img/red.png"));
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				tabs.setIconAt(currentTab, new ImageIcon("img/red.png"));
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				tabs.setIconAt(currentTab, new ImageIcon("img/red.png"));
+			}
+		});
+		editor.addCaretListener(new CaretListener() {
+
+			@Override
+			public void caretUpdate(CaretEvent e) {]]></codefragment>
+   </duplication>
+   <duplication lines="14" tokens="103">
+      <file line="55"
+            path="/Users/petra/Documents/workspace/jnotepadpp/src/main/java/hr/fer/zemris/java/hw10/jnotepadpp/CatAction.java"/>
+      <file line="55"
+            path="/Users/petra/Documents/workspace/jnotepadpp/src/main/java/hr/fer/zemris/java/hw10/jnotepadpp/CopyAction.java"/>
+      <codefragment><![CDATA[		putValue(Action.MNEMONIC_KEY, KeyEvent.VK_X);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JTextArea editor = editors.get(currentTab).getEditor();
+		Document doc = editor.getDocument();
+		int pocetak = Math.min(editor.getCaret().getDot(), editor.getCaret()
+				.getMark());
+		int duljina = Math.max(editor.getCaret().getDot(), editor.getCaret()
+				.getMark())
+				- pocetak;
+		try {
+			notepad.paste = doc.getText(pocetak, duljina);]]></codefragment>
+   </duplication>
+</pmd-cpd>
